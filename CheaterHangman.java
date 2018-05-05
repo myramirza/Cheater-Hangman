@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.*;
 
+/**
+ *
+ * @author Myra Mirza
+ */
+
 public class CheaterHangman {
     
     public int sizeOfWord;
@@ -288,7 +293,7 @@ public class CheaterHangman {
             //Get number of wrong guesses allowed
             game.getNumOfWrongGuessesAllowed();
 
-            //created list of size words
+            //Creat list of words of chosen size
             ArrayList<String> listOfSizeWords = new ArrayList<String>();
             listOfSizeWords = game.createListOfSizeWords(game.listOfAllWords, size);
                 
@@ -303,34 +308,34 @@ public class CheaterHangman {
                     return;
                 }      
                                
-                // THIS IS WHERE THE USER IS ASKED TO GUESS
+                // This is where the user is asked to guess a letter
                 char userLetter = game.getUserGuess();
 
-                //CREATE A MAP WITH WORD AND BLANKED WORDS
+                //Create a map with words and their blanked out version
                 HashMap<String, String> mapOfWordsAndBlankedWords = new HashMap<String, String>();
                 mapOfWordsAndBlankedWords = game.createMapOfWordsAndBlankedWords(listOfSizeWords, userLetter);
                 
-                //CREATE LIST OF BLANKED WORDS    
+                //Create a list of the blanked out words    
                 ArrayList<String> listOfBlankedWords = new ArrayList<String>();
                 listOfBlankedWords = game.createListOfBlankedWords(listOfSizeWords, userLetter);               
 
-                // CREATE A MAP OF BLANKEDWORDS/FAMS AND OCCURENCES OF EACH BLANKED WORD/FAM        
+                // Create a map of blanked out words/families and occurences of each blanked out word/family        
                 HashMap<String, Integer> mapOfBlankedWordsAndOccurences = new HashMap<String, Integer>();
                 mapOfBlankedWordsAndOccurences = game.createMapOfBlankedWordsAndOccurences(listOfBlankedWords);
 
-                //CREATE A MAP OF WORD FAMILIES BY OCCURENCE
+                //Create a map of word families by occurences
                 HashMap<Integer, String> mapOfWordFamiliesByOccurences = new HashMap<Integer, String>();
                 mapOfWordFamiliesByOccurences = game.createMapOfWordFamiliesByOccurences(mapOfBlankedWordsAndOccurences);
 
-                //GET MAX NUMBER OF WORDS FOR THE WORD FAMILY WITH MOST WORDS
+                //Get the max number of words for the word family with the most words
                 int maxNumberOfWords;
                 maxNumberOfWords = game.getMaxNumOfWordsForWordFamWithLargestNumOfWords (mapOfBlankedWordsAndOccurences);
 
-                //get word fam with largest nuuvebr of words
+                //Get word family with largest number of words
                 String wordFamilyWithLargestNumberOfWords = "";
                 wordFamilyWithLargestNumberOfWords = game.getWordFamilyWithLargestNumOfWords(mapOfWordFamiliesByOccurences, maxNumberOfWords);
 
-                //GET NEW LIST OF WORDS BASED ON CHOSEN WORD FAM
+                //Get a new list of words based on the chosen word family
                 ArrayList <String> wordListBasedOnChosenWordFamily = new ArrayList<String>();
                 wordListBasedOnChosenWordFamily = game.getWordListBasedOnChosenWordFamily(mapOfWordsAndBlankedWords, wordFamilyWithLargestNumberOfWords);
                 
