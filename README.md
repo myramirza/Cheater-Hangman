@@ -1,2 +1,1 @@
-# Cheater-Hangman
-Cheating hangman game
+A Java hangman game that cheats.
